@@ -1,0 +1,35 @@
+
+
+@if(olympicCountry!= undefined){
+    <div class="dashboard">
+        <a class ="btn" routerLink="">back</a>
+        <div class="header">
+            
+            <h2 class ="title">{{olympicCountry.country}}</h2>
+           
+        </div>
+  
+
+        <div class="chart-placeholder">
+            <div class="info-boxes">
+                <div class="info-box">
+                    <div class="info-label">Number of entries</div>
+                    <div class="info-value">{{olympicCountry.participations.length}}</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Total number of medals</div>
+                    <div class="info-value">{{olympicCountry.getTotalMedals()}}</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Total number of athletes</div>
+                    <div class="info-value">{{olympicCountry.getTotalAthlete()}}</div>
+                </div>
+            </div>
+            <app-line-chart [olympicCountry]="olympicCountry"></app-line-chart>
+        </div>
+
+    </div>  
+}
+@if ((olympicCountry=== undefined)){
+    <a routerLink="">back</a>
+}

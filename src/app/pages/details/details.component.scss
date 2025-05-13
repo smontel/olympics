@@ -1,0 +1,85 @@
+/* Structure principale */
+.dashboard {
+
+  padding: 20px;
+  border-radius: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+/* Header avec titre et bouton retour */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.btn {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  border: 1px solid #007BFF;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #007BFF;
+  color: white;
+}
+
+.title {
+  background-color: #007B7F;
+  color: white;
+  border-radius: 8px;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 6px 10px;
+  text-align: center;
+  margin-left: -40px; /* décalage pour compenser le bouton "back" */
+}
+
+/* Boîtes d'information (entries, medals, athletes) */
+.info-boxes {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.info-box {
+  border: 2px solid #007B7F;
+  border-radius: 12px;
+  padding: 2px 2px;
+  text-align: center;
+  min-width: 200px;
+}
+
+.info-label {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0b7285;
+}
+
+.chart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Adaptation du composant graphique s'il a une taille fixe */
+app-line-chart {
+  width: 100%;
+  max-width: 900px;
+  min-height: 50vh;
+}

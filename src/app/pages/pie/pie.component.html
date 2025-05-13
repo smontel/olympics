@@ -1,0 +1,14 @@
+
+<div class="chart-container">
+<ngx-charts-pie-chart
+[scheme]="colorScheme"
+[results]="data"
+[gradient]="true"
+[legend]="false"
+[labels]="true"
+[doughnut]="false"
+[explodeSlices]="false"
+(select)="onSelect($event)"
+>
+</ngx-charts-pie-chart>
+</div>
