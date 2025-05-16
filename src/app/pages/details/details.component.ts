@@ -17,6 +17,8 @@ export class DetailsComponent implements OnInit {
   constructor(private olympicService: OlympicService, private route: ActivatedRoute, private router: Router) {}
   
   olympicCountry!: OlympicCountry | undefined;
+  totalMedals:number|undefined;
+  totalAthlete:number|undefined;
 
   ngOnInit(): void {
     const country = this.route.snapshot.params['country'];
@@ -24,6 +26,8 @@ export class DetailsComponent implements OnInit {
       next: (detailCountry) => {
         if (detailCountry !== undefined) {
           this.olympicCountry = this.formatCountry(detailCountry);
+          this.totalAthlete = this.olympicService.getTotalAthlete(this.olympicCountry);
+          this.totalMedals = this.olympicService.getTotalMedals(this.olympicCountry);
         }
       },
       error: (error) => {
@@ -34,17 +38,17 @@ export class DetailsComponent implements OnInit {
   }
 
   formatCountry( detailCountry:OlympicCountry):OlympicCountry{
-    const participationList = detailCountry.participations.map((participation:Participation) =>
-      new Participation(
-        participation.id,
-        participation.year,
-        participation.city,
-        participation.medalsCount,
-        participation.athleteCount
-      )
-    );
-  
-    return new OlympicCountry(detailCountry.id, detailCountry.country, participationList);
+    const participationList = detailCountry.participations.map((participation:Participation) =>{
+      return {
+        id:participation.id,
+        year:participation.year,
+        city:participation.city,
+        medalsCount:participation.medalsCount,
+        athleteCount:participation.athleteCount
+      }
+    });
+    return {id:detailCountry.id, country:detailCountry.country, participations:participationList};
   }
   
+
 }

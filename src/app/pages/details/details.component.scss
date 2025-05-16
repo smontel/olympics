@@ -38,7 +38,6 @@
   font-weight: 600;
   padding: 6px 10px;
   text-align: center;
-  margin-left: -40px; /* décalage pour compenser le bouton "back" */
 }
 
 /* Boîtes d'information (entries, medals, athletes) */
@@ -67,7 +66,7 @@
 .info-value {
   font-size: 24px;
   font-weight: bold;
-  color: #0b7285;
+  color: #000;
 }
 
 .chart-placeholder {
@@ -77,7 +76,7 @@
   width: 100%;
 }
 
-/* Adaptation du composant graphique s'il a une taille fixe */
+//definition des dimentions du line-chart
 app-line-chart {
   width: 100%;
   max-width: 900px;

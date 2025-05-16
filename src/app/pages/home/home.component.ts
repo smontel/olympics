@@ -28,14 +28,24 @@ export class HomeComponent implements OnInit {
   });
   }
 
-  formatOlympicCountryList(value:any){
+  formatOlympicCountryList(value:OlympicCountry[]){
     let olympicCountries :OlympicCountry[]=[]; 
-    value.map((element: any) => {
+    value.map((element: OlympicCountry) => {
       let participationList = []
       for(const participation of element.participations){
-        participationList.push(new Participation(participation.id, participation.year,participation.city, participation.medalsCount, participation.athleteCount))
+        participationList.push({
+          id:participation.id, 
+          year: participation.year, 
+          city:participation.city,
+          medalsCount: participation.medalsCount,
+          athleteCount: participation.athleteCount
+        })
       }
-      olympicCountries.push(new OlympicCountry(element.id, element.country, participationList));
+      olympicCountries.push({
+        id: element.id,
+        country: element.country,
+        participations: participationList
+      })
     });
     return olympicCountries;
   }

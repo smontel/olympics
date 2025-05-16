@@ -13,7 +13,7 @@ export class LineChartComponent implements OnInit{
   
   @Input() olympicCountry!: OlympicCountry;
 
-  data!: any;
+  data!: {name:string, series:{name:number, value: number}[]}[];
 
   ngOnInit(){
     this.data = [this.formatDataForLineChart(this.olympicCountry)];

@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
   styleUrl: './pie.component.scss'
 })
 export class PieComponent implements OnInit{
-  constructor(private router : Router){}
+  constructor(private router : Router,private olympicService: OlympicService){}
   
   @Input() olympicCountries!: OlympicCountry[];
   
   colorScheme!: Color;
-  data!: any[];
+  data!: {name: string, value: number}[];
 
   ngOnInit(){
     this.data = this.formatDataForPieChart(this.olympicCountries);
@@ -43,16 +43,13 @@ export class PieComponent implements OnInit{
     let list:{name: string, value: number}[] =[]
     if(data!=undefined){
       for(const value of data) {
-        list.push({name : value.country, value: value.getTotalMedals()})
+        list.push({name : value.country, value: this.olympicService.getTotalMedals(value)})
       };
     }
     return list;
   }
 
-  onSelect(event:any){
+  onSelect(event:{name: string, value: number}){
     this.router.navigateByUrl(event.name.toLowerCase())
-  }
-
-
-  
+  }  
 }
